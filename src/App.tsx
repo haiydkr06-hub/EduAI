@@ -111,6 +111,13 @@ const navigation: { label: string; icon: IconName }[] = [
   { label: 'Thành tích', icon: 'trophy' },
 ]
 
+const todayLabel = new Intl.DateTimeFormat('vi-VN', {
+  weekday: 'long',
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+}).format(new Date()).toLocaleUpperCase('vi')
+
 function App() {
   const [activeNav, setActiveNav] = useState('Tổng quan')
   const [filter, setFilter] = useState('Tất cả')
@@ -118,12 +125,6 @@ function App() {
   const [notice, setNotice] = useState('')
   const [menuOpen, setMenuOpen] = useState(false)
   const [notificationsOpen, setNotificationsOpen] = useState(false)
-  const todayLabel = new Intl.DateTimeFormat('vi-VN', {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  }).format(new Date()).toLocaleUpperCase('vi')
 
   const visibleCourses = useMemo(() => {
     const query = search.trim().toLocaleLowerCase('vi')
